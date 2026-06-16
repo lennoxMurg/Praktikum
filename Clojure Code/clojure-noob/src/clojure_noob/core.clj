@@ -6,6 +6,10 @@
   [& args]
   (println "I'm a little teapot!"))
 
+
+
+; Hobbit Example 
+
 (def asym-hobbit-body-parts [{:name "head" :size 3}
                              {:name "left-eye" :size 1}
                              {:name "left-ear" :size 1}
@@ -53,3 +57,47 @@
       (if (> accumulated-size target)
         part
         (recur remaining (+ accumulated-size (:size (first remaining))))))))
+
+
+;; Excercise 1 : Use the str, vector, list, hash-map, and hash-set functions.
+
+; str combines string values
+; vector combines values into a new vector
+; list combines values into a new list
+; hash-map creates key-value pairs and requires an even number of values, alternating between keys and values
+; Hash-set creates a set of unique arguments, automatically removing duplicates
+
+
+; Excercise 2 : Write a function that takes a number and adds 100 to it.
+
+(defn plus-100
+  "Takes a number and adds 100 to it"
+  [number]
+  (+ number 100))
+
+
+;; Excercise 3 : Write a function, dec-maker, that works exactly like the function inc-maker except with subtraction
+
+; inc-maker as given in the book
+(defn inc-maker
+  "Create a custom incrementor"
+  [inc-by]
+  #(+ % inc-by))
+
+(def inc3 (inc-maker 3))
+
+(defn dec-maker 
+  "A custom decrementor"
+  [dec-by]
+  (fn [num]
+    (- num dec-by)))
+
+(def dec9 (dec-maker 9))
+
+
+;; Exercise 4 : Write a function, mapset, that works like map except the return value is a set
+
+(defn mapset [function map-data]
+  (set (map function map-data)))
+
+
