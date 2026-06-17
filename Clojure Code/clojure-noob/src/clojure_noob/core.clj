@@ -97,7 +97,26 @@
 
 ;; Exercise 4 : Write a function, mapset, that works like map except the return value is a set
 
-(defn mapset [function map-data]
+(defn mapset
+  [function map-data]
   (set (map function map-data)))
 
 
+;; Exercise 5 : Create a function that’s similar to symmetrize-body-parts except that
+;; it has to work with weird space aliens with radial symmetry.
+;; Instead of two eyes, arms, legs, and so on, they have five.
+
+(defn alien-matching-parts
+  [part]
+  (if (clojure.string/includes? (:name part) "left-")
+    ;; If it contains "left-", generate 5 numbered parts
+    (map (fn [n]
+           {:name (clojure.string/replace (:name part) #"left-" (str "part-" n "-"))
+            :size (:size part)})
+         (range 1 6))
+    ;; Otherwise, return the single un-symmetrized part (like head) in a list
+    [part]))
+
+(defn alien-symmetrize
+  [coll]
+  (into [] (flatten (map alien-matching-parts coll))))
