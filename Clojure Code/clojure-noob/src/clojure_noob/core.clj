@@ -114,9 +114,12 @@
            {:name (clojure.string/replace (:name part) #"left-" (str "part-" n "-"))
             :size (:size part)})
          (range 1 6))
-    ;; Otherwise, return the single un-symmetrized part (like head) in a list
+    ;; Otherwise, return the single un-symmetrized part (like head) in a (sort of) list
     [part]))
 
 (defn alien-symmetrize
   [coll]
   (into [] (flatten (map alien-matching-parts coll))))
+
+;; Exercise 6 : Create a function that generalizes symmetrize-body-parts and the function you created in 
+
