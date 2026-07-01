@@ -121,5 +121,17 @@
   [coll]
   (into [] (flatten (map alien-matching-parts coll))))
 
+
 ;; Exercise 6 : Create a function that generalizes symmetrize-body-parts and the function you created in 
 
+(defn generalized-matching-parts [part n]
+  "Create n body parts dynamically"
+  (if (clojure.string/includes? (:name part) "left-")
+    (map (fn [i]
+           {:name (clojure.string/replace (:name part) #"left-" (str "part-" i "-"))
+            :size (:size part)})
+         (range 1 (inc n)))
+    [part]))
+
+(defn generalize-symmetrize [coll n]
+  (into [] (flatten (map #(generalized-matching-parts % n) coll))))

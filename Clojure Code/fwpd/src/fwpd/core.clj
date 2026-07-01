@@ -1,4 +1,3 @@
-
 (defn mapify
   "Return a seq of maps like {:name \"Edward Cullen\" :glitter-index 10}"
   [rows]
@@ -55,7 +54,7 @@
         (println "Error - Name needs to be String and glitter-index needs to be int!")
         records)))) ;; Gibt einfach die alte Liste unverändert zurück
 
-;; Exercise 4 : 
+;; Exercise 4 : Write a function that will take your list of maps and convert it back to a CSV string.
 
 (defn record-to-csv
   [records]
